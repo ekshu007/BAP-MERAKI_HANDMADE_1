@@ -44,12 +44,14 @@
         {% if 'user_id' in session %}
             {% if session['is_admin'] %}
                 <li><a href="{{ url_for('add_product') }}"><i class="fas fa-plus-circle"></i> Add Product</a></li>
- <li><a href="{{ url_for('inquiries') }}"><i class="fas fa-question-circle"></i> Inquiries</a></li>
+                <li><a href="{{ url_for('inquiries') }}"><i class="fas fa-question-circle"></i> Inquiries</a></li>
             {% else %}
                 <li><a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <li><a href="{{ url_for('payment') }}"><i class="fas fa-credit-card"></i> Payment</a></li>
             {% endif %}
-            <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            {% if request.endpoint == 'user_home' %}
+                <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            {% endif %}
             <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         {% else %}
             <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
