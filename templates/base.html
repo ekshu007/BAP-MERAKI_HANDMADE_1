@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Meraki Handmade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsnIAgIqyBcN1FBbJXaRq59fjHYsizej3Lsg&s" alt="Your Image">
+        </div>
+        <h1>Meraki Handmade</h1>
+    </div>
+</header>
+<nav>
+    <ul class="nav-links">
+        {% if 'user_id' in session %}
+            {% if session['is_admin'] %}
+                <li><a href="{{ url_for('user_home') }}"><i class="fas fa-home"></i> Home</a></li>
+            {% else %}
+                <li class="dropdown">
+                    <a href="{{ url_for('user_home') }}" class="dropbtn"><i class="fas fa-home"></i> Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about-us"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#brand-story"><i class="fas fa-book"></i> Our Story</a></li>
+                        <!-- add more submenu items here -->
+                    </ul>
+                </li>
+            {% endif %}
+        {% else %}
+            <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        {% endif %}
+        
+        {% if not session['is_admin'] %}
+            <li><a href="{{ url_for('products') }}"><i class="fas fa-shopping-bag"></i> Products</a></li>
+        {% endif %}
+       
+        <!-- Add more links here as needed -->
+        {% if 'user_id' in session %}
+            {% if session['is_admin'] %}
+                <li><a href="{{ url_for('add_product') }}"><i class="fas fa-plus-circle"></i> Add Product</a></li>
+ <li><a href="{{ url_for('inquiries') }}"><i class="fas fa-question-circle"></i> Inquiries</a></li>
+            {% else %}
+                <li><a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="{{ url_for('payment') }}"><i class="fas fa-credit-card"></i> Payment</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% block content %}
+{% endblock %}
+<footer>
+    <div class="footer-links">
+        <a href="#">Shop</a>
+        <a href="#about-us">About Us</a>
+        <a href="contact.html">Customer Service</a>
+    </div>
+    <div class="social-media">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+    </div>
+    <div class="contact-info">
+        <p>Email: niveditha_yesh@yahoo.com</p>
+        <p>Phone: +91 98453 79212</p>
+    </div>
+</footer>
+</body>
+</html>
