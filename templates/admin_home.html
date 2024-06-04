@@ -1,6 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Welcome Admin!</h2>
-<p>This is your homepage.</p>
+<!-- admin_home.html -->
+
+<!-- Link to base HTML file -->
+<link rel="stylesheet" href="base.css">
+
+<!-- Header section -->
+<header>
+  <h1>Welcome to Ecommerce Website</h1>
+  <i class="fas fa-shopping-cart fa-2x"></i>
+  <i class="fas fa-user fa-2x"></i>
+</header>
+
+<!-- Main section -->
+<main>
+  <section>
+    <h2>Admin Features</h2>
+    <p>As an admin, you can use this website to manage your ecommerce store.</p>
+    <ul>
+      <li><strong>CRUD Operations on Products</strong>: Create, Read, Update, and Delete products with ease.</li>
+      <li><strong>Product Management</strong>: Manage your product catalog, including pricing, inventory, and product information.</li>
+      <li><strong>Order Management</strong>: View and manage orders, including order status and customer information.</li>
+      <li><strong>Reporting and Analytics</strong>: Get insights into your sales, revenue, and customer behavior.</li>
+    </ul>
+    <i class="fas fa-cog fa-2x"></i>
+  </section>
+
+  <section>
+    <h2>User Features</h2>
+    <p>As a user, you can use this website to browse and purchase products.</p>
+    <ul>
+      <li><strong>Browse Products</strong>: Explore our product catalog and discover new products.</li>
+      <li><strong>Secure Checkout</strong>: Make secure payments using our trusted payment gateway.</li>
+      <li><strong>Order Tracking</strong>: Track your orders and get updates on your delivery status.</li>
+      <li><strong>Customer Support</strong>: Get assistance from our customer support team.</li>
+    </ul>
+    <i class="fas fa-smile fa-2x"></i>
+  </section>
+
+  <!-- Artistic image section -->
+  <section>
+    <h2>Artistic Images</h2>
+    <img src="https://example.com/image1.jpg" alt="Image 1">
+    <img src="https://example.com/image2.jpg" alt="Image 2">
+    <!-- Add more images as needed -->
+  </section>
+</main>
+
 {% endblock %}
