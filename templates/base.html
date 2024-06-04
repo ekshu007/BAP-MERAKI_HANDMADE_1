@@ -48,10 +48,10 @@
             {% else %}
                 <li><a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <li><a href="{{ url_for('payment') }}"><i class="fas fa-credit-card"></i> Payment</a></li>
+                        <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
+
             {% endif %}
-            {% if request.endpoint == 'user_home' %}
-                <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            {% endif %}
+            
             <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         {% else %}
             <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
