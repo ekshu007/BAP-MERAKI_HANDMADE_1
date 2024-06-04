@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -40,15 +41,12 @@ nav {
     list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center; /* Add this line to vertically align the items */
     margin: 0;
     padding: 0;
 }
 
 .nav-links li {
     margin: 0 15px;
-    position: relative;
-    display: inline-block;
 }
 
 .nav-links a {
@@ -59,7 +57,6 @@ nav {
 .nav-links a:hover {
     color: #ff6f61; 
 }
-
 
 /* Marquee */
 .marquee {
@@ -79,14 +76,6 @@ nav {
     width: 100%;
     height: 350px;
     margin: 0 auto; /* Center the image horizontally */
-}
-
-.story-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px; /* Add rounded corners */
-    display: block;
-    margin: auto;
 }
 
 .hero-section {
@@ -172,14 +161,16 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .offer-card {
-    margin: 0 20px; /* Add space between offer cards */
+    margin: 20px; /* Add space between offer cards */
     background-color: #fff; /* White background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     border-radius: 8px; /* Add rounded corners */
     overflow: hidden; /* Hide overflowing content */
+    max-width: 300px; /* Limit card width */
 }
 
 .offer-card img {
@@ -221,20 +212,11 @@ footer {
     text-align: center;
 }
 
-
-* .container {
-    width:1300px;
-    background-color: rgb(255, 245, 225);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
-}
 .story-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 2000px; /* Limit the width for better readability */
+    max-width: 1000px; /* Limit the width for better readability */
     margin: 0 auto; /* Center the section */
     text-align: left; /* Align text to the left */
 }
@@ -243,20 +225,15 @@ footer {
     flex: 1; /* Take up half of the available width */
     max-width: 50%; /* Limit to half the width */
     padding: 20px; /* Add padding around the image */
-    height: calc(100% + 100px); /* Stretch the height by 100px */
 }
 
 .story-image img {
-    width: auto; /* Ensure the image fills the container horizontally */
-    max-width: 2000px;
-    height: auto; /* Maintain the aspect ratio */
-    max-height: 3000px; /* Set a maximum height for the image */
-    object-fit: contain; /* Maintain the aspect ratio and fit the image inside the container */
+    width: 100%; /* Ensure the image fills the container */
+    height: auto;
     border-radius: 8px; /* Add rounded corners */
     display: block;
     margin: auto;
 }
-
 
 .story-text {
     flex: 1; /* Take up half of the available width */
@@ -323,7 +300,6 @@ footer {
     object-fit: cover; /* Maintain aspect ratio */
     border-radius: 8px; /* Add rounded corners */
 }
-
 
 .product h3 {
     color: #333;
