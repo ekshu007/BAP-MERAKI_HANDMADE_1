@@ -21,7 +21,7 @@
     <ul class="nav-links">
         {% if 'user_id' in session %}
             {% if session['is_admin'] %}
-                <li><a href="{{ url_for('user_home') }}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{{ url_for('admin_home') }}"><i class="fas fa-home"></i> Home</a></li>
             {% else %}
                 <li class="dropdown">
                     <a href="{{ url_for('user_home') }}" class="dropbtn"><i class="fas fa-home"></i> Home</a>
