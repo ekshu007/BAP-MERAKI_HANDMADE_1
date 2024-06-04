@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+<div class="payment-form">
+    <form id="paymentForm" action="{{ url_for('send_confirmation') }}" method="post">
+        <div class="form-group">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item['name'] }}</td>
+                    <td>{{ item['price'] }}</td>
+                    <td>{{ item['category'] }}</td>
+                    <td>{{ item['quantity'] }}</td>
+                    <td>{{ item['details'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("paymentForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Get the table rows
+    var tableRows = document.querySelectorAll(".cart-table tbody tr");
+
+    // Create an array to store the data from each row
+    var items = [];
+
+    // Loop through each row and extract the data
+    tableRows.forEach(function(row) {
+        var item = {
+            name: row.cells[0].innerText,
+            price: parseFloat(row.cells[1].innerText),
+            category: row.cells[2].innerText,
+            quantity: parseInt(row.cells[3].innerText),
+            details: row.cells[4].innerText
+        };
+        items.push(item);
+    });
+
+    // Get the email from the form
+    var email = document.getElementById("email").value;
+
+    // Create the data object to be sent
+    var data = {
+        email: email,
+        items: items
+    };
+
+    // Send data to the server using AJAX
+    fetch(event.target.action, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Log the server response
+        // Handle the response as needed (e.g., show a success message)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle errors if any
+    });
+});
+
+
+</script>
+{% endblock %}

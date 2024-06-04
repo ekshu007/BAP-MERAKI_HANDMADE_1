@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Inquiries{% endblock %}
+
+{% block content %}
+    <h2>Inquiries</h2>
+    <ul id="inquiries-list">
+        {% for inquiry in inquiries %}
+            <li class="random-inquiry-item">
+                <strong>{{ inquiry[1] }}</strong> <!-- Name -->
+                <button type="button" class="btn-read-inquiry" data-toggle="modal" data-target="#messageModal{{ inquiry[0] }}">
+                    Read
+                </button>
+                <button type="submit" class="btn-delete-inquiry" form="deleteForm{{ inquiry[0] }}">Delete</button>
+                <!-- Read Message Modal -->
+                <div class="modal fade" id="messageModal{{ inquiry[0] }}" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel{{ inquiry[0] }}" aria-hidden="true">
+                    <div class="modal-dialog modal-inquiry-message" role="document">
+                        <div class="modal-content">
+                         <div class="modal-body">
+                                {{ inquiry[4] }} <!-- Message -->
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="messageModalLabel{{ inquiry[0] }}">Message</h5>
+                                <button type="button" class="btn-close-modal" data-dismiss="modal" aria-label="Close">
+                                    Close
+                                </button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- Delete Form -->
+                <form id="deleteForm{{ inquiry[0] }}" action="{{ url_for('delete_inquiry', id=inquiry[0]) }}" method="post" style="display: none;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token }}">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
