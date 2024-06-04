@@ -48,9 +48,10 @@
             {% else %}
                 <li><a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
                 <li><a href="{{ url_for('payment') }}"><i class="fas fa-credit-card"></i> Payment</a></li>
+            {% endif %}
+           {% if not session ['is_admin'] %}
                 <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Us</a></li>
             {% endif %}
-            
             <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         {% else %}
             <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -59,6 +60,7 @@
 </nav>
 {% block content %}
 {% endblock %}
+
 <footer>
     <div class="footer-links">
         <a href="#">Shop</a>
@@ -66,15 +68,16 @@
         <a href="contact.html">Customer Service</a>
     </div>
     <div class="social-media">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        
+        <a href="https://www.instagram.com/merakihandmade2?igsh=YWloZWN4ZjhoMHV0"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:niveditha_yesh@yahoo.com"><i class="fab fa-yahoo"></i></a>
     </div>
     <div class="contact-info">
         <p>Email: niveditha_yesh@yahoo.com</p>
         <p>Phone: +91 98453 79212</p>
     </div>
 </footer>
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/16e9228f-95e6-44e7-9e30-d79ad38d71f2/webchat/config.js" defer></script>
 </body>
 </html>
